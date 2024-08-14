@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: confingserver
+  profiles:
+    #active: native
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/Yannick-Bribaud/config-server.git"
+          default-label: master
+          timeout: 10
+          clone-on-start: true
+          force-pull: true
+        #native:
+          #search-locations: "classpath:/config/"
+          #search-locations: "file:///C://config"
+
+server:
+  port: 8000

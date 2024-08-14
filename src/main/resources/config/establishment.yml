@@ -1,0 +1,17 @@
+server:
+  port: 7002
+  servlet:
+    context-path: /establishment
+
+spring:
+  application:
+    name: establishment
+  datasource:
+    url: jdbc:mysql://localhost:3310/establishment_db
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
