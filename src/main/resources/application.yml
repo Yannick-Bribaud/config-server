@@ -1,21 +1,49 @@
+server:
+  port: 8000
+
 spring:
   application:
-    name: confingserver
+    name: configserver
   profiles:
-    #active: native
     active: git
+    #active: native
   cloud:
     config:
       server:
         git:
-          uri: "https://github.com/Yannick-Bribaud/config-server.git"
-          default-label: master
+          uri: "https://github.com/Yannick-Bribaud/configserver.git"
+          default-label: main
           timeout: 10
           clone-on-start: true
           force-pull: true
         #native:
           #search-locations: "classpath:/config/"
-          #search-locations: "file:///C://config"
+         #search-locations: "file:///C://config"
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
-server:
-  port: 8000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+
+
+encrypt:
+  key: "394659EAAF4B9EA252B5F1DBEB523A8B"
+
+
