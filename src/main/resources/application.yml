@@ -11,7 +11,7 @@ spring:
     config:
       server:
         git:
-          uri: "https://github.com/Yannick-Bribaud/configserver.git"
+          uri: "https://github.com/Yannick-Bribaud/configserver-files.git"
           default-label: main
           timeout: 10
           clone-on-start: true
@@ -40,10 +40,22 @@ management:
     health:
       probes:
         enabled: true
-
+  #Prometheus config
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 
 encrypt:
   key: "394659EAAF4B9EA252B5F1DBEB523A8B"
 
+logging:
+  level:
+    com:
+      upsilon:
+        configserver: DEBUG
+  #OpenTelemetry config
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId},%X{spanId}]"
+    console: "%green(%d{yyyy-MM-dd' 'HH:mm:ss.SSSXXX}) %blue(%-5level) %red([%thread]) %yellow(%logger{20}) - %msg%n"
 
